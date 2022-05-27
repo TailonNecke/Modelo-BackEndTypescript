@@ -1,0 +1,13 @@
+npm init -y
+
+npm install typescript ts-node nodemon -D
+
+npx tsc --init
+
+npm install express
+
+npm install @types/express -D
+
+npm install typeorm reflect-metadata
+
+npm install pg     //para o postgres

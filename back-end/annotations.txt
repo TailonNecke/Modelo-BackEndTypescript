@@ -1,0 +1,20 @@
+Scripts do packet.json devem ficar assim:
+
+"scripts": {
+    "start": "npx nodemon --exec ts-node src/index.ts",
+    "typeormAuth": "typeorm-ts-node-commonjs -d ./src/database/data-sources/data-sourceAuth.ts",
+    "migration:run": "npm run typeormAuth migration:run",
+    "migration:revert": "npm run typeormAuth migration:revert",
+    "migration:create": "typeorm-ts-node-commonjs migration:create"
+  },
+
+
+Comandos:
+
+  "
+  npm run migration:create src/database/migrations/Auth/*name*     
+  
+  npm run migration:run     
+  
+  npm run migration:revert
+  "
