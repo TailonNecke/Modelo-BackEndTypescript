@@ -1,6 +1,6 @@
 import AuthDataSource from '../../database/data-sources/data-sourceAuth';
 
-import User from '../models/STORE/User'
+import User from '../models/Auth/User'
 
 export async function storeService(email: string, password: string){
     const repository = AuthDataSource.getRepository(User);

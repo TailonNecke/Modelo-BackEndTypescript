@@ -8,7 +8,7 @@ const SFMDataSource = new DataSource({
     password: '12345678',
     database: 'auth',
     entities: [
-        "src/app/models/SFM/*.ts"
+        "src/app/models/Auth/*.ts"
     ],
     migrations: [
         "src/database/migrations/Auth/*.ts"
