@@ -6,7 +6,9 @@ export async function storeService(email: string, password: string){
     const repository = AuthDataSource.getRepository(User);
     
 
-    const userExists = await repository.findOne({where: { email }})
+    const userExists = await repository.createQueryBuilder("A")
+    .where("A.email = :email", {email: email});
+
     
     if(userExists) {
         return false;
