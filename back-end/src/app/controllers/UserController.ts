@@ -1,24 +1,18 @@
 import { Request, Response} from 'express'
-import getRepository from 'typeorm'
-import AuthDataSource from '../../database/data-sources/data-sourceAuth';
-
-import User from '../models/SFM/User'
+import { storeService } from '../services/StoreService'
 
  class UserController {
     async store(req: Request, res: Response) {
-        const repository = AuthDataSource.getRepository(User);
         const { email, password } = req.body;
+        storeService(email, password).then((data) => {
+            
+            if(data == false){
+                return res.sendStatus(409);
+            }else{
+                return res.json(data);
+            }
 
-        const userExists = await repository.findOne({where: { email }})
-        
-        if(userExists) {
-            return res.sendStatus(409);
-        }
-
-        const user = repository.create({ email, password });
-        await repository.save(user)
-
-        return res.json(user);
+        })
     }
 
 }
